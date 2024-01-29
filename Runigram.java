@@ -13,10 +13,8 @@ public class Runigram {
 		// Tests the reading and printing of an image:
 		Color[][] tinypic = read("tinypic.ppm");
 		// print(tinypic);
-		Color[][] flipped_pic = scaled(tinypic, 3, 5);
-		Color test_color = new Color(100, 40, 100);
-		Color test_color2 = new Color(200, 20, 40);
-		System.out.println(blend(test_color, test_color2, 0.25));
+		Color[][] flipped_pic = grayScaled(tinypic);
+		print(flipped_pic);
 		// Creates an image which will be the result of various
 		// image processing operations:
 		Color[][] imageOut;
@@ -120,10 +118,10 @@ public class Runigram {
 	// the three values r = lum, g = lum, b = lum.
 	public static Color luminance(Color pixel) {
 		//// Replace the following statement with your code
-		int R = (int) Math.round((0.299 * (double) pixel.getRed()));
-		int G = (int) Math.round((0.587 * (double) pixel.getGreen()));
-		int B = (int) Math.round((0.114 * (double) pixel.getBlue()));
-		int value = R + G + B;
+		double R = (0.299 * (double) pixel.getRed());
+		double G = (0.587 * (double) pixel.getGreen());
+		double B = (0.114 * (double) pixel.getBlue());
+		int value = (int) (R + G + B);
 		Color new_pixel = new Color(value, value, value);
 		return new_pixel;
 	}
